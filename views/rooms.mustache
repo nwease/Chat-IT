@@ -5,25 +5,16 @@
 <body class="container">
     <div class="row">
         <div class="col-md-6 col-md-offset-3" style="text-align:center;margin-bottom:48px">
-            <h1>Welcome to Chat-IT</h1>
+            <h1>Rooms</h1>
             <hr />
             <div style="background:#f9f9f9;border:1px solid #ddd;border-radius:3px;padding:12px">
-            	<h2>Register</h2>
+            	<h2>Create Room</h2>
                 <form action="/auth/register" method="POST">
-                	<input class="form-control" type="text" name="username" placeholder="Username">
+                	<input class="form-control" type="text" name="category" placeholder="Category">
                 	<br />
-                	<input class="form-control" type="password" name="password" placeholder="Password">
+                	<input class="form-control" type="description" name="description" placeholder="Description">
                 	<br />
-                	<button class="btn btn-primary" type="submit" placeholder="Submit">Submit</button>
-                </form>
-				<br />
-                <h2>Login</h2>
-                <form action="/auth/login" method="POST">
-                	<input class="form-control" type="text" name="username" placeholder="Username">
-                	<br />
-                	<input class="form-control" type="password" name="password" placeholder="Password">
-                	<br />
-                	<button class="btn btn-primary" type="login" placeholder="Login">Login</button>
+                	<button class="btn btn-primary" type="submit" placeholder="submit">Create Room</button>
                 </form>
             </div>
         </div>

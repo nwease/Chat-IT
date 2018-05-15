@@ -7,4 +7,8 @@ router.get('/', (req, res) => {
 	res.render('index', null)
 })
 
+router.get('/rooms', (req, res) => {
+	res.render('rooms', null)
+})
+
 module.exports = router
