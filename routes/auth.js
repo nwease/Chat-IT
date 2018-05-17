@@ -25,6 +25,7 @@ router.post('/login', (req, res) => {
 	.then(data => {
 		// Successful login! Set vertexSession:
 		req.vertexSession.user = {id: data.id}
+
 		res.json({
 			confirmation: 'success',
 			data: data
@@ -39,6 +40,7 @@ router.post('/login', (req, res) => {
 })
 
 router.get('/currentuser', (req, res) => {
+
 	// no one logged in:
 	if (req.vertexSession == null){
 		res.json({
@@ -74,12 +76,18 @@ router.get('/currentuser', (req, res) => {
 })
 
 router.get('/logout', (req, res) => {
+
 	req.vertexSession.reset() // destroy session
+
 	res.json({
 		confirmation: 'success',
 		user: null
 	})
+
 })
 
 
 module.exports = router
+
+
+

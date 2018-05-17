@@ -5,23 +5,15 @@
 <body class="container">
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3" style="text-align:center;margin-bottom:48px">
-			<h1>Welcome to Chat App</h1>
+			<h1>Room</h1>
 			<hr />
 			<div style="background:#f9f9f9;border:1px solid #ddd;border-radius:3px;padding:12px">
-				<h2>Register</h2>
-				<form action="/auth/register" method="POST">
-					<input placeholder="username" class="form-control" type="text" name="username" /><br />
-					<input placeholder="password" class="form-control" type="password" name="password" /><br />
-					<button type="submit">Join</button>
-				</form>
-
-				<hr />
-
-				<h2>Login</h2>
-				<form action="/auth/login" method="POST">
-					<input placeholder="username" class="form-control" type="text" name="username" /><br />
-					<input placeholder="password" class="form-control" type="password" name="password" /><br />
-					<button type="submit">Login</button>
+				<h2>Create Topic</h2>
+				<form action="/api/topic" method="POST">
+					<input placeholder="category" class="form-control" type="text" name="title" /><br />
+					<input placeholder="description" class="form-control" type="text" name="description" /><br />
+					<input class="form-control" type="hidden" name="room" value="{{room}}" />
+					<button type="submit">Create Topic</button>
 				</form>
 			</div>
 		</div>
