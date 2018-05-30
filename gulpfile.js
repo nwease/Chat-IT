@@ -86,20 +86,7 @@ gulp.task('js-page-dashboard', function(){
         .pipe(gulp.dest('./public/dist/pages/dashboard/js/'))
 });
 
-//gulp.task('js-main', function(){
-//    return gulp.src(
-//            [
-//                './public/js/main.js'
-//           ]
-//        )
-//        .pipe(gp_concat('main.min.js'))
- //       .pipe(gulp.dest('./public/dist/js/'))
-//        .pipe(gp_rename('main.min.js'))
-//        .pipe(gp_uglify())
-//        .pipe(gulp.dest('./public/dist/js/'))
-//});
-
-//gulp.task('js', ['js-vendor', 'js-main'], function(){})
+gulp.task('js', ['js-vendor', 'js-app', 'js-page-dashboard'], function(){})
 
 gulp.task('prod', ['style', 'js'], function(){})
 gulp.task('default', ['style', 'js'], function(){})

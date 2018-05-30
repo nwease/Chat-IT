@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "test": "",
-    "build": ""
+    "clean": "rimraf ./public/dist",
+    "build": "npm run clean && cross-env NODE_ENV=production gulp prod"
   },
   "dependencies": {
     "nodemon": "^1.17.1",
