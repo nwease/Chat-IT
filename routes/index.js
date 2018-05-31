@@ -6,7 +6,8 @@ const CDN = (process.env.TURBO_ENV == 'dev') ? '' : process.env.TURBO_CDN
 
 router.get('/', (req, res) => {
 	const config = {
-		cdn: CDN
+		cdn: CDN,
+		page: 'Home'
 	}
 
 	res.render('index', config)
