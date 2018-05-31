@@ -93,7 +93,7 @@ gulp.task('js-page-dashboard', function(){
             ]
         )
         .pipe(gp_concat('dashboard.min.js'))
-        .pipe(gulp.dest('./public/dist/js/'))
+        .pipe(gulp.dest('./public/dist/pages/dashboard/js/'))
         .pipe(gp_rename('dashboard.min.js'))
         .pipe(gp_uglify())
         .pipe(gulp.dest('./public/dist/pages/dashboard/js/'))
@@ -108,7 +108,7 @@ gulp.task('js-page-home', function(){
             ]
         )
         .pipe(gp_concat('home.min.js'))
-        .pipe(gulp.dest('./public/dist/js/'))
+        .pipe(gulp.dest('./public/dist/pages/homejs/'))
         .pipe(gp_rename('home.min.js'))
         .pipe(gp_uglify())
         .pipe(gulp.dest('./public/dist/pages/home/js/'))
