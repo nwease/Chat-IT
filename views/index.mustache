@@ -40,46 +40,32 @@
                                     <thead>
                                         <tr>
                                             <th>Room</th>
-                                            <th>Requested By</th>
-                                            <th>Subject</th>
-                                            <th>Assignee</th>
-                                            <th>Priority</th>
-                                            <th>Status</th>
-                                            <th>Created Date</th>
-                                            <th>Due Date</th>
+                                            <th>Posted By</th>
+                                            <th>Topic</th>
+                                            <th>Replies</th>
+                                            <th>Date</th>
                                             <th class="hidden-sm">Action</th>
                                         </tr>
                                     </thead>
 
                                     <tbody>
-                                        <tr>
-                                            <td><b>Politics</b></td>
+                                        {{#topics}}
+                                             <tr>
+                                            <td><b>{{room}}</b></td>
                                             <td>
-                                                <a href="javascript: void(0);">
+                                                <a href="#">
                                                     <img src="/images/users/avatar-8.jpg" alt="contact-img" title="contact-img" class="rounded-circle" />
-                                                    <span class="ml-2">Margeret V. Ligon</span>
+                                                    <span class="ml-2">{{profile.username}}</span>
                                                 </a>
                                             </td>
                                             <td>
-                                                Your application has been received!
+                                                <a style="color:red" href="#">{{title}}</a>
                                             </td>
-                                            <td>
-                                                <a href="javascript: void(0);">
-                                                    <img src="/images/users/avatar-10.jpg" alt="contact-img" title="contact-img" class="rounded-circle" />
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <span class="badge badge-danger">High</span>
-                                            </td>
-                                            <td>
-                                                <span class="badge badge-secondary">Closed</span>
-                                            </td>
-                                            <td>
-                                                01/04/2017
-                                            </td>
-                                            <td>
-                                                21/05/2017
-                                            </td>
+                                           
+                                            <td><span class="badge badge-warning">7</span></td>
+                                            
+                                            <td>2019/05/15</td>
+                                            
                                             <td>
                                                 <div class="btn-group dropdown">
                                                     <a href="javascript: void(0);" class="table-action-btn dropdown-toggle arrow-none btn btn-light btn-sm" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
@@ -92,46 +78,8 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td><b>Sports</b></td>
-                                            <td>
-                                                <a href="javascript: void(0);">
-                                                    <img src="/images/users/avatar-9.jpg" alt="contact-img" title="contact-img" class="rounded-circle" />
-                                                    <span class="ml-2">Erwin E. Brown</span>
-                                                </a>
-                                            </td>
-                                            <td>
-                                                A new rating has been received
-                                            </td>
-                                            <td>
-                                                <a href="javascript: void(0);">
-                                                    <img src="/images/users/avatar-1.jpg" alt="contact-img" title="contact-img" class="rounded-circle" />
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <span class="badge badge-warning">Medium</span>
-                                            </td>
-                                            <td>
-                                                <span class="badge badge-secondary">Closed</span>
-                                            </td>
-                                            <td>
-                                                2013/08/11
-                                            </td>
-                                            <td>
-                                                2013/08/30
-                                            </td>
-                                            <td>
-                                                <div class="btn-group dropdown">
-                                                    <a href="javascript: void(0);" class="table-action-btn dropdown-toggle arrow-none btn btn-light btn-sm" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
-                                                    <div class="dropdown-menu dropdown-menu-right">
-                                                        <a class="dropdown-item" href="#"><i class="mdi mdi-pencil mr-2 text-muted font-18 vertical-middle"></i>Edit Ticket</a>
-                                                        <a class="dropdown-item" href="#"><i class="mdi mdi-check-all mr-2 text-muted font-18 vertical-middle"></i>Close</a>
-                                                        <a class="dropdown-item" href="#"><i class="mdi mdi-delete mr-2 text-muted font-18 vertical-middle"></i>Remove</a>
-                                                        <a class="dropdown-item" href="#"><i class="mdi mdi-star mr-2 font-18 text-muted vertical-middle"></i>Mark as Unread</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                        {{/topics}}
+                                        
                                     </tbody>
                                 </table>
                             </div>

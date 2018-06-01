@@ -5,9 +5,15 @@ const router = vertex.router()
 const CDN = (process.env.TURBO_ENV == 'dev') ? '' : process.env.TURBO_CDN
 
 router.get('/', (req, res) => {
+	const recentTopics = [
+		{room:'politics', title:'Will Trump win in 2020?', profile:{username:'cheese', image:''}, numReplies:'7', date:'May 15th, 2018'},
+		{room:'sports', title:'Will the Detroit Lions ever go to the Superbowl?', profile:{username:'goat', image:''}, numReplies:'10', date:'May 11th, 2018'}
+	]
+
 	const config = {
 		cdn: CDN,
-		page: 'Home'
+		page: 'Home',
+		topics: recentTopics
 	}
 
 	res.render('index', config)
