@@ -13,10 +13,32 @@ router.get('/', (req, res) => {
 	const config = {
 		cdn: CDN,
 		page: 'Home',
-		topics: recentTopics
+		topics: recentTopics,
+		loggedIn: 'false'
 	}
 
-	res.render('index', config)
+	// no one logged in:
+	if (req.vertexSession == null){
+		res.render('index', config)
+		return
+	}
+
+	// no one logged in:
+	if (req.vertexSession.user == null){
+		res.render('index', config)	
+		return		
+	}
+
+	// someone logged in!
+	turbo.fetchOne('user', req.vertexSession.user.id)
+	.then(data => {
+		delete config['loggedIn']
+		config['user'] = data
+		res.render('index', config)
+	})
+	.catch(err => {
+		res.render('index', config)
+	})
 })
 
 router.get('/rooms', (req, res) => {

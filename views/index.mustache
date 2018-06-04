@@ -135,6 +135,8 @@
                             alert('Error: ' + data.message)
                             return
                         }
+
+                        window.location.href = '/'
                     },
                     error: function (jqXHR, textStatus, err){
                         alert('Error: ' + err.message)

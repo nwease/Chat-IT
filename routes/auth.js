@@ -78,11 +78,12 @@ router.get('/currentuser', (req, res) => {
 router.get('/logout', (req, res) => {
 
 	req.vertexSession.reset() // destroy session
+	res.redirect('/')
 
-	res.json({
-		confirmation: 'success',
-		user: null
-	})
+	//res.json({
+	//	confirmation: 'success',
+	//	user: null
+	//})
 
 })
 
