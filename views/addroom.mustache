@@ -75,9 +75,20 @@
                 $('#btn-add-room').click(function(event){
                     event.preventDefault()
                     var room = {
-                        name: $('#room-name').val().trim,
-                        description: $('#room-description').val().trim
+                        name: $('#room-name').val().trim(),
+                        description: $('#room-description').val().trim()
                     }
+
+                    if (room.name.length == 0){
+                        alert('Please enter a room NAME')
+                        return
+                    }
+
+                    if (room.description.length == 0){
+                        alert('Please enter a room DESCRIPTION')
+                        return
+                    }
+
                     console.log('ADD ROOM: ' + JSON.stringify(room))
                 })
             })()

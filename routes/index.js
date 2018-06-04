@@ -42,7 +42,33 @@ router.get('/', (req, res) => {
 })
 
 router.get('/addroom', (req, res) => {
-	res.render('addroom', null)
+	const config = {
+		cdn: CDN
+	}
+
+	// no one logged in:
+	if (req.vertexSession == null){
+		res.redirect('/')
+		return
+	}
+
+	// no one logged in:
+	if (req.vertexSession.user == null){
+		res.redirect('/')
+		return		
+	}
+
+	// someone logged in!
+	turbo.fetchOne('user', req.vertexSession.user.id)
+	.then(data => {
+		config['user'] = data
+		res.render('addroom', config)
+	})
+	.catch(err => {
+		res.render('addroom', config)
+	})
+
+	//res.render('addroom', null)
 })
 
 router.get('/rooms', (req, res) => {
