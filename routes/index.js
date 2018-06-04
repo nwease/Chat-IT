@@ -41,6 +41,10 @@ router.get('/', (req, res) => {
 	})
 })
 
+router.get('/addroom', (req, res) => {
+	res.render('addroom', null)
+})
+
 router.get('/rooms', (req, res) => {
 	res.render('rooms', null)
 })
