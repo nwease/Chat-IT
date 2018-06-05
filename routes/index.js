@@ -34,6 +34,13 @@ router.get('/', (req, res) => {
 	.then(data => {
 		delete config['loggedIn']
 		config['user'] = data
+
+		return turbo.fetch('room', null)
+		//res.render('index', config)
+	})
+	.then(rooms => {
+		console.log('ROOMS: ' + JSON.stringify(rooms))
+		config['rooms'] = rooms
 		res.render('index', config)
 	})
 	.catch(err => {
@@ -67,8 +74,6 @@ router.get('/addroom', (req, res) => {
 	.catch(err => {
 		res.render('addroom', config)
 	})
-
-	//res.render('addroom', null)
 })
 
 router.get('/rooms', (req, res) => {

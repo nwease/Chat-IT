@@ -2,18 +2,12 @@
 const turbo = require('turbo360')({site_id: process.env.TURBO_APP_ID})
 const vertex = require('vertex360')({site_id: process.env.TURBO_APP_ID})
 const router = vertex.router()
-
-// valid resources
-const resources = [
-	'room',
-	'topic',
-	'reply',
-	'user'
-]
+const controllers = require('../controllers')
 
 router.post('/:resource', (req, res) => {
 	const resource = req.params.resource
-	if (resources.indexOf(resource) == -1){ // invalid resource!
+	const controller = controllers[resource]
+	if (controller == null){
 		res.json({
 			confirmation: 'fail',
 			message: 'Invalid Resource: ' + resource
@@ -22,7 +16,7 @@ router.post('/:resource', (req, res) => {
 		return
 	}
 
-	turbo.create(resource, req.body)
+	controller.post(req.body)
 	.then(data => {
 		res.json({
 			confirmation: 'success',
@@ -39,7 +33,8 @@ router.post('/:resource', (req, res) => {
 
 router.get('/:resource', (req, res) => {
 	const resource = req.params.resource
-	if (resources.indexOf(resource) == -1){ // invalid resource!
+	const controller = controllers[resource]
+	if (controller == null){
 		res.json({
 			confirmation: 'fail',
 			message: 'Invalid Resource: ' + resource
@@ -48,7 +43,7 @@ router.get('/:resource', (req, res) => {
 		return
 	}
 
-	turbo.fetch(resource, req.query)
+	controller.get(req.query)
 	.then(data => {
 		res.json({
 			confirmation: 'success',
@@ -65,7 +60,8 @@ router.get('/:resource', (req, res) => {
 
 router.get('/:resource/:id', (req, res) => {
 	const resource = req.params.resource
-	if (resources.indexOf(resource) == -1){ // invalid resource!
+	const controller = controllers[resource]
+	if (controller == null){
 		res.json({
 			confirmation: 'fail',
 			message: 'Invalid Resource: ' + resource
@@ -74,7 +70,7 @@ router.get('/:resource/:id', (req, res) => {
 		return
 	}
 
-	turbo.fetchOne(resource, req.params.id)
+	controller.getById(req.params.id)
 	.then(data => {
 		res.json({
 			confirmation: 'success',
