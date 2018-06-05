@@ -27,7 +27,17 @@ module.exports = {
     },
     post: (body) => {
         return new Promise((resolve, reject) => {
-            turbo.create(resource, body)
+        	body['subscribers'] = [body.user]
+        	turbo.fetchOne('user', body.user)
+        	.then(user => {
+        		body['user'] = {
+        			id: user.id,
+        			username: user.username,
+        			image: user.image
+        		}
+
+        		return turbo.create(resource, body)
+        	})
             .then(data => {
             	resolve(data)
             })
