@@ -75,14 +75,34 @@ router.get('/addroom', (req, res) => {
 	})
 })
 
-router.get('/rooms', (req, res) => {
-	res.render('rooms', null)
+router.get('/room/:slug', (req, res) => {
+	const config = {
+		cdn: CDN
+	}
+
+	turbo.fetch('room', {slug: req.params.slug})
+	.then(rooms => {
+		if (rooms.length == 0){ // room not found
+			throw new Error('Room' +req.params.slug+ 'not found')
+			return
+		}
+
+		var room = rooms[0]
+		config['room'] = room
+		config['page'] = room.category
+		console.log('ROOM: ' + JSON.stringify(config))
+
+		res.render('room', config)
+	})
+	.catch(err => {
+
+	})
+
+	//res.render('room', {room:req.params.slug})
 })
 
-router.get('/room/:id', (req, res) => {
-
-	res.render('room', {room:req.params.id})
-	
+router.get('/rooms', (req, res) => {
+	res.render('rooms', null)
 })
 
 module.exports = router
